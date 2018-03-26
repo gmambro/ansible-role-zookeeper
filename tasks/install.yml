@@ -1,0 +1,34 @@
+---
+
+- name: Install from tar.gz
+  include_tasks: install_tgz.yml
+
+- name: Install Zookeeper init script
+  template: 
+    dest: /etc/systemd/system/zookeeper-server.service 
+    mode: 0755
+    src: zookeeper.service.j2 
+  notify: reload systemd
+
+- meta: flush_handlers
+
+- name: Configure Zookeeper server
+  template: 
+    src: zoo.cfg.j2 
+    dest: "{{ zookeeper_conf_file }}"
+  notify: restart zookeeper
+
+- name: Create Zookeeper data directory
+  file: 
+    path: "{{ zookeeper_data_dir }}"
+    state: directory
+    mode: 755
+    owner: "{{ zookeeper_user }}"
+    group: "{{ zookeeper_group }}"
+
+- name: Configure myid
+  template: 
+    src: myid.j2 
+    dest: "{{ zookeeper_data_dir }}/myid"
+  when: zookeeper_force_myid
+  notify: restart zookeeper

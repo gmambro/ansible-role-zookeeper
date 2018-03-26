@@ -1,0 +1,13 @@
+[Unit]
+Description=zookeeper-server service
+After=network.target
+
+[Service]
+Type=simple
+User={{zookeeper_user}}
+ExecStart={{zookeeper_bin_dir}}/zkServer.sh {{zookeeper_conf_file}}
+Restart=on-abort
+
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,31 @@
+galaxy_info:
+  author: Gabriele Mambrini
+  description: Ansible role for Apache Zookeeper
+
+  license: Apache
+
+  min_ansible_version: 2.4
+
+  platforms:
+    - name: EL
+      versions: 
+        - 7
+  # - name: Fedora
+  #   versions:
+  #   - all
+  #   - 25
+  # - name: SomePlatform
+  #   versions:
+  #   - all
+  #   - 1.0
+  #   - 7
+  #   - 99.99
+
+  galaxy_tags:
+    - zookeeper
+    - distributed synchronization
+    - distributed hierarchical key-value store
+    - synchronization service
+
+
+dependencies: []

@@ -1,0 +1,6 @@
+- hosts: localhost
+  remote_user: root
+  roles:
+    - name: gmambro.zookeeper
+      vars:
+        zookeeper_ensemble: [ 'test', 'localhost' ]

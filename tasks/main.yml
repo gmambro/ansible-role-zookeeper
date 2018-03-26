@@ -1,0 +1,16 @@
+---
+- name: Check informations and system status
+  include_tasks: facts.yml
+  tags: always
+
+- name: Install ZooKeeper
+  include_tasks: install.yml
+  tags: install
+
+- name: Make sure Zookeeper is running 
+  service:
+    name: zookeeper-server 
+    enabled: yes 
+    state: started
+  when: zookeeper_manage_service
+

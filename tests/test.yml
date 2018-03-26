@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  remote_user: root
+  roles:
+    - name: gmambro.zookeeper
+      vars:
+        zookeeper_node_id: 1
+
+
