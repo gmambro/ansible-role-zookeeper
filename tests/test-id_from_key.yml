@@ -1,0 +1,9 @@
+- hosts: localhost
+  remote_user: root
+  roles:
+    - name: gmambro.zookeeper
+      vars:
+        zookeeper_ensemble: 
+          - { name: 'test', id: 1 }
+          - { name: 'test2', id: 2 }
+          - { name: 'localhost', id: 3 }
