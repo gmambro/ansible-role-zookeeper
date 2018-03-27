@@ -1,6 +1,7 @@
 ---
 
 - set_fact:
+    zookeeper_node_id: "{{ zookeeper_node_id }}"
     zookeeper_node_id_from: node
   when:
     zookeeper_node_id is defined

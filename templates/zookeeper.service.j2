@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 User={{zookeeper_user}}
-ExecStart={{zookeeper_bin_dir}}/zkServer.sh {{zookeeper_conf_file}}
+ExecStart={{zookeeper_bin_dir}}/zkServer.sh start-foreground
 Restart=on-abort
 
 
