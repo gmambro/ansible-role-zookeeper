@@ -1,48 +1,45 @@
 ---
 
 - name: "Ensure the zookeeper dir exists"
-  file: 
+  file:
     path: "{{zookeeper_dir}}"
     state: "directory"
 
 - name: Download zookeeper version.
-  get_url: 
+  get_url:
     url: "{{zookeeper_url}}"
     dest: "{{zookeeper_tarball_dir}}/{{ zookeeper_tarball_name}}"
 
 - name: Extract tarball.
-  unarchive: 
+  unarchive:
     src: "{{zookeeper_tarball_dir}}/zookeeper-{{zookeeper_version}}.tar.gz"
     extra_opts:
-      -  --strip-components=1 
+      -  --strip-components=1
     dest: "{{zookeeper_dir}}"
     remote_src: yes
 
 - name: Create Zookeeper local group
-  group: 
-    name: "{{ zookeeper_group }}" 
+  group:
+    name: "{{ zookeeper_group }}"
     system: yes
 
 - name: Create Zookeeper local user
-  user: 
+  user:
     name: "{{ zookeeper_user }}"
-    group: "{{ zookeeper_group }}" 
+    group: "{{ zookeeper_group }}"
     system: yes
 
 - name: Change ownership on zookeeper directory.
-  file: 
+  file:
     path: "{{zookeeper_dir}}"
-    state: directory 
+    state: directory
     owner: "{{ zookeeper_user }}"
     group: "{{ zookeeper_group }}"
 
 
 - name: Add zookeeper's bin dir to the PATH
-  copy: 
-    content: "export PATH=$PATH:{{zookeeper_dir}}/bin" 
-    dest: "/etc/profile.d/zookeeper_path.sh" 
+  copy:
+    content: "export PATH=$PATH:{{ zookeeper_bin_dir }}"
+    dest: "/etc/profile.d/zookeeper_path.sh"
     mode: 0755
   when: zookeeper_register_path_env
-
-
-
