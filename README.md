@@ -27,7 +27,7 @@ zookeeper_client_port: 2181
 zookeeper_init_limit: 5
 zookeeper_sync_limit: 2
 zookeeper_tick_time: 2000
-'''
+```
 
 The node id can be se using the zookeeper_node_id variables (e.g. coming from
    the inventory)
