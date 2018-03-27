@@ -5,6 +5,6 @@
 
 - name: restart zookeeper
   service: 
-    name: zookeeper-server 
+    name: zookeeper
     state: restarted
   when:  zookeeper_manage_service 

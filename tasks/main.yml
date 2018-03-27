@@ -9,7 +9,7 @@
 
 - name: Make sure Zookeeper is running 
   service:
-    name: zookeeper-server 
+    name: zookeeper
     enabled: yes 
     state: started
   when: zookeeper_manage_service
