@@ -5,7 +5,7 @@
 
 - name: Install Zookeeper init script
   template: 
-    dest: /etc/systemd/system/zookeeper-server.service 
+    dest: /etc/systemd/system/zookeeper.service 
     mode: 0755
     src: zookeeper.service.j2 
   notify: reload systemd
