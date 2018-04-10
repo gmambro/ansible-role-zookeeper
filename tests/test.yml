@@ -5,5 +5,9 @@
     - name: gmambro.zookeeper
       vars:
         zookeeper_node_id: 1
+  tasks:
+    - name: Get Facts
+      zookeeper_facts:
 
-
+    - debug:
+        var: zookeeper_facts
