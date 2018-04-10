@@ -3,6 +3,7 @@ Ansible role for Zookeeper
 
 [![Build Status](https://travis-ci.org/gmambro/ansible-role-zookeeper.svg?branch=master)](https://travis-ci.org/gmambro/ansible-role-zookeeper)
 
+Install and configure zookeeper. Provides module for retrieving facts.
 
 Requirements
 ------------
@@ -53,6 +54,13 @@ Simple playbook
         - name: gmambro.zookeeper
           vars:
             zookeeper_node_id: 1
+      tasks:
+        - name: Get Facts
+          zookeeper_facts:
+
+        - name: Register zookeeper mode
+          register_fact: 
+		zookeeper_mode: "{{ zookeeper_facts }}"
 
 Zookeeper cluster.
 
