@@ -6,6 +6,11 @@
       vars:
         zookeeper_node_id: 1
   tasks:
+    - name: Wait for server to come up
+      wait_for:
+        port: 2181
+        delay: 1
+
     - name: Get Facts
       zookeeper_facts:
 
