@@ -13,4 +13,3 @@
     enabled: yes 
     state: started
   when: zookeeper_manage_service
-

@@ -1,5 +1,7 @@
+# Backup files
 *~
-*.bak
-*.old
+# Ansible retry files
 *.retry
+# Develop tools and envs
 .vagrant
+.venv
