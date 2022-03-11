@@ -16,9 +16,8 @@ galaxy_info:
 
   galaxy_tags:
     - zookeeper
-    - distributed synchronization
-    - distributed hierarchical key-value store
-    - synchronization service
-
+    - distributed
+    - keyvalue    
+    - synchronization 
 
 dependencies: []

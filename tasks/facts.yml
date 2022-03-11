@@ -1,12 +1,14 @@
 ---
 
-- set_fact:
+- name: Set zookeeper node_id from node
+  set_fact:
     zookeeper_node_id: "{{ zookeeper_node_id }}"
     zookeeper_node_id_from: node
   when:
     zookeeper_node_id is defined
 
-- set_fact:
+- name: Set zookeeper node_id from item.id
+  set_fact:
     zookeeper_node_id: "{{ item.id }}"
     zookeeper_node_id_from: key
   with_items:
@@ -16,7 +18,8 @@
     item.id is defined and
     item.name is defined and inventory_hostname == item.name
 
-- set_fact:
+- name: Set zookeeper node_id from item index
+  set_fact:
     zookeeper_node_id: "{{ item.0|int + 1 }}"
     zookeeper_node_id_from: index
   with_indexed_items: "{{ zookeeper_ensemble }}"
@@ -24,25 +27,27 @@
     zookeeper_node_id is not defined and
     inventory_hostname == item.1
 
-- assert:
+- name: Make sure  zookeeper_node_id is defined
+  assert:
     that:
       - zookeeper_node_id is defined
 
-- debug: var=zookeeper_node_id
+- name: Debug zookeeper_node_id
+  debug: var=zookeeper_node_id
 
 - name: Check variables
   assert:
     that:
-      - '{{item}} is defined'
-      - '{{item}} != ""'
+      - '{{ item }} is defined'
+      - '{{ item }} != ""'
   with_items:
       - zookeeper_node_id
 
 - name: Check list variables
   assert:
     that:
-      - '{{item}} is defined'
-      - '{{item}} | count > 0'
+      - '{{ item }} is defined'
+      - '{{ item }} | count > 0'
     msg: "{{ item }} should be defined with at least one item"
   with_items:
       - zookeeper_ensemble

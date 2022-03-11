@@ -3,7 +3,7 @@ dataDir={{ zookeeper_data_dir }}
 # the port at which the clients will connect
 clientPort={{ zookeeper_client_port }}
 # disable the per-ip limit on the number of connections since this is a non-production config
-maxClientCnxns={{ zookeeper_maxClientCnxns }}
+maxClientCnxns={{ zookeeper_max_client_cnxns }}
 
 #----------------------Zookeeper Cluster---------------
 
@@ -21,7 +21,7 @@ server.
 :{{ zookeeper_connect_port}}:{{zookeeper_election_port }}
 {% endfor %}
 
-tickTime={{ zookeeper_tickTime }}
+tickTime={{ zookeeper_tick_time }}
 initLimit={{ zookeeper_init_limit }}
 syncLimit={{ zookeeper_sync_limit }}
 #-----------------------------------------------------
